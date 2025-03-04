@@ -1,0 +1,325 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>NUM2WORDS Examples</title><meta name="generator" content="MATLAB 8.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2020-07-09"><meta name="DC.source" content="num2words_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, tt, code { font-size:12px; }
+pre { margin:0px 0px 20px; }
+pre.error { color:red; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>NUM2WORDS Examples</h1><!--introduction--><p>The function <a href="https://www.mathworks.com/matlabcentral/fileexchange/47221"><tt>NUM2WORDS</tt></a> converts a numeric scalar into a string with the number value given in English words, e.g. <tt>1024</tt> -&gt; <tt>'one thousand and twenty-four'</tt>. Optional arguments control the handling of the numeric input, as well as many string formatting and dialect options. The options are explained in this document, together with examples.</p><p>The number format is based on <a href="http://www.blackwasp.co.uk/NumberToWords.aspx">http://www.blackwasp.co.uk/NumberToWords.aspx</a></p><p>In the <tt>NUM2WORDS</tt> documentation the word <i>string</i> refers to a 1xN character vector, and not to the MATLAB string class.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Basic Usage</a></li><li><a href="#2">Decimal Digits</a></li><li><a href="#3">Trailing Zeros</a></li><li><a href="#4">Floating-Point Precision</a></li><li><a href="#5">Integer Precision</a></li><li><a href="#6">Type: Decimal</a></li><li><a href="#7">Type: Ordinal</a></li><li><a href="#8">Type: Highest</a></li><li><a href="#9">Type: Money</a></li><li><a href="#10">Type: Cheque</a></li><li><a href="#11">String: Capitalisation</a></li><li><a href="#12">String: Grammar</a></li><li><a href="#13">String: 'Positive' Prefix</a></li><li><a href="#14">Number Scales</a></li><li><a href="#15">Faster Conversion: <tt>NUM2WORDSQ</tt></a></li><li><a href="#16">Reverse Conversion: <tt>WORDS2NUM</tt></a></li></ul></div><h2>Basic Usage<a name="1"></a></h2><p>For integer values <tt>NUM2WORDS</tt> can be called without any options:</p><pre class="codeinput">num2words(0)
+num2words(+1024)
+num2words(-1024)
+</pre><pre class="codeoutput">ans =
+zero
+ans =
+one thousand and twenty-four
+ans =
+negative one thousand and twenty-four
+</pre><h2>Decimal Digits<a name="2"></a></h2><p><tt>NUM2WORDS</tt> rounds the input number value to the digit specified by the either the <tt>order</tt> or the <tt>sigfig</tt> option:</p><div><ul><li><tt>sigfig</tt> rounds the value to the requested number of significant figures,</li><li><tt>order</tt> rounds the value to the specified order of magnitude.</li></ul></div><p>The default <tt>order</tt> is zero, which means that any fractional part is rounded to give an integer. Fractional digits can be included by selecting an appropriate value for either the <tt>order</tt> or <tt>sigfig</tt> options:</p><pre class="codeinput">num2words(1.234) <span class="comment">% default 'order' is zero</span>
+num2words(1.234, <span class="string">'order'</span>,-2)
+num2words(1.234, <span class="string">'sigfig'</span>,3)
+</pre><pre class="codeoutput">ans =
+one
+ans =
+one point two three
+ans =
+one point two three
+</pre><h2>Trailing Zeros<a name="3"></a></h2><p>By default trailing fractional zeros are not included in the string. Setting the <tt>trz</tt> option to <tt>true</tt> will keep the trailing zeros up to the requested <tt>order</tt> or <tt>sigfig</tt>:</p><pre class="codeinput">num2words(1, <span class="string">'sigfig'</span>,3, <span class="string">'trz'</span>,false) <span class="comment">% default</span>
+num2words(1, <span class="string">'sigfig'</span>,3, <span class="string">'trz'</span>,true)
+</pre><pre class="codeoutput">ans =
+one
+ans =
+one point zero zero
+</pre><h2>Floating-Point Precision<a name="4"></a></h2><p><tt>NUM2WORDS</tt> has internal limits on the significant figures for all <a href="http://www.mathworks.com/help/matlab/matlab_prog/floating-point-numbers.html">floating-point numbers</a>: 15 for double, and 6 for single. These limits ensure that the least-unexpected output is returned. As <tt>NUM2WORDS</tt> is based around <tt>SPRINTF</tt>, an <tt>SPRINTF</tt> example shows why this is required:</p><pre class="codeinput">sprintf(<span class="string">'%#.15g'</span>,1e23) <span class="comment">% fifteen significant figures</span>
+sprintf(<span class="string">'%#.16g'</span>,1e23) <span class="comment">% sixteen significant figures</span>
+</pre><pre class="codeoutput">ans =
+1.00000000000000e+23
+ans =
+9.999999999999999e+22
+</pre><h2>Integer Precision<a name="5"></a></h2><p>In contrast, all <a href="http://www.mathworks.com/help/matlab/matlab_prog/integers.html">integer class numbers</a> are parsed at their full precision (even <tt>UINT64</tt>, and positive and negative <tt>INT64</tt> values):</p><pre class="codeinput">num2words(intmax(<span class="string">'uint64'</span>))
+num2words(intmin(<span class="string">'int64'</span>), <span class="string">'pos'</span>,true)
+num2words(intmax(<span class="string">'int64'</span>), <span class="string">'pos'</span>,true)
+</pre><pre class="codeoutput">ans =
+eighteen quintillion, four hundred and forty-six quadrillion, seven hundred and forty-four trillion, seventy-three billion, seven hundred and nine million, five hundred and fifty-one thousand, six hundred and fifteen
+ans =
+negative nine quintillion, two hundred and twenty-three quadrillion, three hundred and seventy-two trillion, thirty-six billion, eight hundred and fifty-four million, seven hundred and seventy-five thousand, eight hundred and eight
+ans =
+positive nine quintillion, two hundred and twenty-three quadrillion, three hundred and seventy-two trillion, thirty-six billion, eight hundred and fifty-four million, seven hundred and seventy-five thousand, eight hundred and seven
+</pre><h2>Type: Decimal<a name="6"></a></h2><p>The default type: it can be used for all integer and decimal fraction values. All of the above examples use this number type.</p><h2>Type: Ordinal<a name="7"></a></h2><p>The last number word is changed to have an ordinal ending:</p><pre class="codeinput">num2words(1, <span class="string">'type'</span>,<span class="string">'ordinal'</span>)
+num2words(12, <span class="string">'type'</span>,<span class="string">'ordinal'</span>)
+num2words(123, <span class="string">'type'</span>,<span class="string">'ordinal'</span>)
+</pre><pre class="codeoutput">ans =
+first
+ans =
+twelfth
+ans =
+one hundred and twenty-third
+</pre><h2>Type: Highest<a name="8"></a></h2><p>This uses the highest magnitude word together with a significand that includes fractional digits when required. In most cases it would be useful to also specify the number of significant figures:</p><pre class="codeinput">num2words(1234567.89, <span class="string">'type'</span>,<span class="string">'highest'</span>)
+num2words(1234567.89, <span class="string">'type'</span>,<span class="string">'highest'</span>, <span class="string">'sigfig'</span>,2)
+</pre><pre class="codeoutput">ans =
+one point two three four five six eight million
+ans =
+one point two million
+</pre><h2>Type: Money<a name="9"></a></h2><p>Treats the number as being a value of currency, and returns a string that contains the currency unit and subunit names. The currency subunit is 1/100 of the unit, which suits almost all currencies in the world today. The currency unit and subunit names can be supplied as string arguments: the string format also selects whether the name has a regular, irregular or invariant plural form (see the <tt>NUM2WORDS</tt> help for details).</p><p>Note that the default <tt>order</tt> is changed to -2, to match the subunit.</p><pre class="codeinput">num2words(23.5, <span class="string">'type'</span>,<span class="string">'money'</span>)
+num2words(23.5, <span class="string">'type'</span>,<span class="string">'money'</span>, <span class="string">'unit'</span>,<span class="string">'Pound|'</span>, <span class="string">'subunit'</span>,<span class="string">'Penny|Pence'</span>)
+num2words(101,  <span class="string">'type'</span>,<span class="string">'money'</span>, <span class="string">'unit'</span>,<span class="string">'Dalmatian|'</span>, <span class="string">'case'</span>,<span class="string">'title'</span>)
+num2words(1001, <span class="string">'type'</span>,<span class="string">'money'</span>, <span class="string">'unit'</span>,<span class="string">'Night|'</span>, <span class="string">'case'</span>,<span class="string">'title'</span>)
+</pre><pre class="codeoutput">ans =
+twenty-three dollars and fifty cents
+ans =
+twenty-three pounds and fifty pence
+ans =
+One Hundred and One Dalmatians
+ans =
+One Thousand and One Nights
+</pre><h2>Type: Cheque<a name="10"></a></h2><p>Similar to <tt>money</tt>, but follows the style used in many countries: if no trailing subunits then the units are followed by the word <tt>'only'</tt>, and leading units are always indicated, even if they are zero (preventing fraud):</p><pre class="codeinput">num2words(5.0,<span class="string">'type'</span>,<span class="string">'cheque'</span>)
+num2words(0.5,<span class="string">'type'</span>,<span class="string">'cheque'</span>)
+</pre><pre class="codeoutput">ans =
+five dollars only
+ans =
+zero dollars and fifty cents
+</pre><h2>String: Capitalisation<a name="11"></a></h2><p>The default returns a lower-case string. It is also possible to select upper-case, title-case (all words except <tt>'and'</tt> have an initial capital letter) and sentence-case (only the first word has an initial capital):</p><pre class="codeinput">num2words(-1023,<span class="string">'case'</span>,<span class="string">'lower'</span>) <span class="comment">% default</span>
+num2words(-1023,<span class="string">'case'</span>,<span class="string">'upper'</span>)
+num2words(-1023,<span class="string">'case'</span>,<span class="string">'title'</span>)
+num2words(-1023,<span class="string">'case'</span>,<span class="string">'sentence'</span>)
+</pre><pre class="codeoutput">ans =
+negative one thousand and twenty-three
+ans =
+NEGATIVE ONE THOUSAND AND TWENTY-THREE
+ans =
+Negative One Thousand and Twenty-Three
+ans =
+Negative one thousand and twenty-three
+</pre><h2>String: Grammar<a name="12"></a></h2><p>There are some string formatting options that allow for different English dialects and style guidelines. The option defaults can be changed inside the mfile, if you wish to make another English dialect the default.</p><pre class="codeinput">num2words(1234,<span class="string">'and'</span>,true,<span class="string">'comma'</span>,true, <span class="string">'hyphen'</span>,true) <span class="comment">% default</span>
+num2words(1234,<span class="string">'and'</span>,false,<span class="string">'comma'</span>,false, <span class="string">'hyphen'</span>,false)
+</pre><pre class="codeoutput">ans =
+one thousand, two hundred and thirty-four
+ans =
+one thousand two hundred thirty four
+</pre><h2>String: 'Positive' Prefix<a name="13"></a></h2><p><tt>NUM2WORDS</tt> always prepends <tt>'negative'</tt> for negative number values (including negative zero). The <tt>'positive'</tt> prefix is optional:</p><pre class="codeinput">num2words(1, <span class="string">'pos'</span>,false) <span class="comment">% default</span>
+num2words(1, <span class="string">'pos'</span>,true)
+</pre><pre class="codeoutput">ans =
+one
+ans =
+positive one
+</pre><h2>Number Scales<a name="14"></a></h2><p><tt>NUM2WORDS</tt> supports a number of common and not-so-common <a href="https://en.wikipedia.org/wiki/Names_of_large_numbers">number scales</a>:</p><div><ul><li><a href="https://en.wikipedia.org/wiki/Short_and_long_scale"><tt>short</tt> and <tt>long</tt> scales</a> are explained on many websites. Most contemporary English dialects use the <tt>short</tt> scale (and this is the <tt>NUM2WORDS</tt> default).</li><li><a href="https://en.wikipedia.org/wiki/Indian_numbering_system"><tt>indian</tt> number system</a> is commonly used in South Asia (the Indian subcontinent). Defaults back to <tt>short</tt> for values greater than 1e21.</li><li><a href="https://en.wikipedia.org/wiki/Jacques_Pelletier_du_Mans"><tt>peletier</tt> scale</a> is used in many non-English speaking European countries.</li><li><a href="http://www.unc.edu/~rowlett/units/large.html"><tt>rowlett</tt> scale</a> was designed to avoid the ambiguity of the <tt>short</tt> and <tt>long</tt> scales.</li><li><a href="https://sites.google.com/site/pointlesslargenumberstuff/home/1/knuthyllions"><tt>knuth</tt> scale</a> (aka <i>-yllion</i>) uses a logarithmic naming system to use very few names to cover a very wide range of values.</li></ul></div><pre class="codeinput">num2words(1e9, <span class="string">'scale'</span>,<span class="string">'short'</span>) <span class="comment">% default</span>
+num2words(1e9, <span class="string">'scale'</span>,<span class="string">'long'</span>)
+num2words(1e9, <span class="string">'scale'</span>,<span class="string">'indian'</span>)
+num2words(1e9, <span class="string">'scale'</span>,<span class="string">'peletier'</span>)
+num2words(1e9, <span class="string">'scale'</span>,<span class="string">'rowlett'</span>)
+num2words(1e9, <span class="string">'scale'</span>,<span class="string">'knuth'</span>)
+</pre><pre class="codeoutput">ans =
+one billion
+ans =
+one thousand million
+ans =
+one hundred crore
+ans =
+one milliard
+ans =
+one gillion
+ans =
+ten myllion
+</pre><h2>Faster Conversion: <tt>NUM2WORDSQ</tt><a name="15"></a></h2><p>The bonus function <tt>NUM2WORDSQ</tt> does not support any options and runs around twice as fast as <tt>NUM2WORDS</tt>:</p><pre class="codeinput">num2wordsq(1024)
+</pre><pre class="codeoutput">ans =
+One Thousand and Twenty-Four
+</pre><h2>Reverse Conversion: <tt>WORDS2NUM</tt><a name="16"></a></h2><p>The function <a href="https://www.mathworks.com/matlabcentral/fileexchange/52925"><tt>WORDS2NUM</tt></a> converts a number string into a numeric value:</p><pre class="codeinput">words2num(<span class="string">'one thousand and twenty-four'</span>)
+</pre><pre class="codeoutput">ans =
+        1024
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2012b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% NUM2WORDS Examples
+% The function <https://www.mathworks.com/matlabcentral/fileexchange/47221
+% |NUM2WORDS|> converts a numeric scalar into a string with the number value
+% given in English words, e.g. |1024| -> |'one thousand and twenty-four'|.
+% Optional arguments control the handling of the numeric input, as well as
+% many string formatting and dialect options.
+% The options are explained in this document, together with examples.
+%
+% The number format is based on <http://www.blackwasp.co.uk/NumberToWords.aspx>
+%
+% In the |NUM2WORDS| documentation the word _string_ refers to a 1xN
+% character vector, and not to the MATLAB string class.
+%% Basic Usage
+% For integer values |NUM2WORDS| can be called without any options:
+num2words(0)
+num2words(+1024)
+num2words(-1024)
+%% Decimal Digits
+% |NUM2WORDS| rounds the input number value to the digit specified by the
+% either the |order| or the |sigfig| option:
+%
+% * |sigfig| rounds the value to the requested number of significant figures,
+% * |order| rounds the value to the specified order of magnitude.
+%
+% The default |order| is zero, which means that any fractional part is
+% rounded to give an integer. Fractional digits can be included by selecting
+% an appropriate value for either the |order| or |sigfig| options:
+num2words(1.234) % default 'order' is zero
+num2words(1.234, 'order',-2)
+num2words(1.234, 'sigfig',3)
+%% Trailing Zeros
+% By default trailing fractional zeros are not included in the string.
+% Setting the |trz| option to |true| will keep
+% the trailing zeros up to the requested |order| or |sigfig|:
+num2words(1, 'sigfig',3, 'trz',false) % default
+num2words(1, 'sigfig',3, 'trz',true)
+%% Floating-Point Precision
+% |NUM2WORDS| has internal limits on the significant figures for all
+% <http://www.mathworks.com/help/matlab/matlab_prog/floating-point-numbers.html
+% floating-point numbers>: 15 for double, and 6 for single. These limits
+% ensure that the least-unexpected output is returned. As |NUM2WORDS| is
+% based around |SPRINTF|, an |SPRINTF| example shows why this is required:
+sprintf('%#.15g',1e23) % fifteen significant figures
+sprintf('%#.16g',1e23) % sixteen significant figures
+%% Integer Precision
+% In contrast, all <http://www.mathworks.com/help/matlab/matlab_prog/integers.html
+% integer class numbers> are parsed at their full precision (even |UINT64|,
+% and positive and negative |INT64| values):
+num2words(intmax('uint64'))
+num2words(intmin('int64'), 'pos',true)
+num2words(intmax('int64'), 'pos',true)
+%% Type: Decimal
+% The default type: it can be used for all integer and decimal fraction
+% values. All of the above examples use this number type.
+%% Type: Ordinal
+% The last number word is changed to have an ordinal ending:
+num2words(1, 'type','ordinal')
+num2words(12, 'type','ordinal')
+num2words(123, 'type','ordinal')
+%% Type: Highest
+% This uses the highest magnitude word together with a significand that
+% includes fractional digits when required. In most cases it would be
+% useful to also specify the number of significant figures:
+num2words(1234567.89, 'type','highest')
+num2words(1234567.89, 'type','highest', 'sigfig',2)
+%% Type: Money
+% Treats the number as being a value of currency, and returns a string that
+% contains the currency unit and subunit names. The currency subunit is
+% 1/100 of the unit, which suits almost all currencies in the world today.
+% The currency unit and subunit names can be supplied as string arguments:
+% the string format also selects whether the name has a regular, irregular
+% or invariant plural form (see the |NUM2WORDS| help for details).
+%
+% Note that the default |order| is changed to -2, to match the subunit.
+num2words(23.5, 'type','money')
+num2words(23.5, 'type','money', 'unit','Pound|', 'subunit','Penny|Pence')
+num2words(101,  'type','money', 'unit','Dalmatian|', 'case','title')
+num2words(1001, 'type','money', 'unit','Night|', 'case','title')
+%% Type: Cheque
+% Similar to |money|, but follows the style used in many countries: if no
+% trailing subunits then the units are followed by the word |'only'|, and
+% leading units are always indicated, even if they are zero (preventing fraud):
+num2words(5.0,'type','cheque')
+num2words(0.5,'type','cheque')
+%% String: Capitalisation
+% The default returns a lower-case string. It is also possible to select
+% upper-case, title-case (all words except |'and'| have an initial capital
+% letter) and sentence-case (only the first word has an initial capital):
+num2words(-1023,'case','lower') % default
+num2words(-1023,'case','upper')
+num2words(-1023,'case','title')
+num2words(-1023,'case','sentence')
+%% String: Grammar
+% There are some string formatting options that allow for different English
+% dialects and style guidelines. The option defaults can be changed inside
+% the mfile, if you wish to make another English dialect the default.
+num2words(1234,'and',true,'comma',true, 'hyphen',true) % default
+num2words(1234,'and',false,'comma',false, 'hyphen',false)
+%% String: 'Positive' Prefix
+% |NUM2WORDS| always prepends |'negative'| for negative number values
+% (including negative zero). The |'positive'| prefix is optional:
+num2words(1, 'pos',false) % default
+num2words(1, 'pos',true)
+%% Number Scales
+% |NUM2WORDS| supports a number of common and not-so-common
+% <https://en.wikipedia.org/wiki/Names_of_large_numbers number scales>:
+%
+% * <https://en.wikipedia.org/wiki/Short_and_long_scale |short| and
+% |long| scales> are explained on many websites. Most contemporary English
+% dialects use the |short| scale (and this is the |NUM2WORDS| default).
+% * <https://en.wikipedia.org/wiki/Indian_numbering_system
+% |indian| number system> is commonly used in South Asia (the Indian
+% subcontinent). Defaults back to |short| for values greater than 1e21.
+% * <https://en.wikipedia.org/wiki/Jacques_Pelletier_du_Mans |peletier|
+% scale> is used in many non-English speaking European countries.
+% * <http://www.unc.edu/~rowlett/units/large.html |rowlett| scale> was
+% designed to avoid the ambiguity of the |short| and |long| scales.
+% * <https://sites.google.com/site/pointlesslargenumberstuff/home/1/knuthyllions
+% |knuth| scale> (aka _-yllion_) uses a logarithmic naming system to use
+% very few names to cover a very wide range of values.
+num2words(1e9, 'scale','short') % default
+num2words(1e9, 'scale','long')
+num2words(1e9, 'scale','indian')
+num2words(1e9, 'scale','peletier')
+num2words(1e9, 'scale','rowlett')
+num2words(1e9, 'scale','knuth')
+%% Faster Conversion: |NUM2WORDSQ|
+% The bonus function |NUM2WORDSQ| does not support any options and runs
+% around twice as fast as |NUM2WORDS|:
+num2wordsq(1024)
+%% Reverse Conversion: |WORDS2NUM|
+% The function <https://www.mathworks.com/matlabcentral/fileexchange/52925
+% |WORDS2NUM|> converts a number string into a numeric value:
+words2num('one thousand and twenty-four')
+##### SOURCE END #####
+--></body></html>
