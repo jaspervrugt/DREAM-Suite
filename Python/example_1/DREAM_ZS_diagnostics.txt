@@ -1,0 +1,59 @@
+======================= DREAM_ZS diagnostics file ========================
+Sandwich correction is INACTIVE
+
+ Table 3. DREAM_ZS: Single chain convergence diagnostics 
+---------------------------------------------------------------------------
+CHAIN 1 USING 10000 SAMPLES
+
+A. AUTOCORRELATION
+Variable  Lag 1     Lag 5     Lag 10    Lag 25    
+1         -0.012    -0.012    -0.012    -0.012    
+2         -0.040    -0.040    -0.040    -0.040    
+B. RAFTERY-LEWIS DIAGNOSTIC (q = 0.03, r = 0.01, s = 0.95)
+Variable  Thin      Burn      N         Nmin      I-stat    
+1         1         1059      366276    937       390.903   
+2         1         628       193251    937       206.244   
+C. GEWEKE DIAGNOSTIC
+Variable  Mean      std dev   NSE iid   RNE iid   
+1         0.468     9.740     0.097     1.000     
+2         0.531     11.668    0.117     1.000     
+Variable  NSE 4%    RNE 4%    NSE 8%    RNE 8%    NSE 15%   RNE 15%   
+1         1.333     0.005     1.366     0.005     0.832     0.014     
+2         1.103     0.011     1.025     0.013     0.977     0.014     
+---------------------------------------------------------------------------
+CHAIN 2 USING 10000 SAMPLES
+
+A. AUTOCORRELATION
+Variable  Lag 1     Lag 5     Lag 10    Lag 25    
+1         -0.207    -0.207    -0.207    -0.207    
+2         -0.056    -0.056    -0.056    -0.056    
+B. RAFTERY-LEWIS DIAGNOSTIC (q = 0.03, r = 0.01, s = 0.95)
+Variable  Thin      Burn      N         Nmin      I-stat    
+1         1         299       88307     937       94.244    
+2         1         366       110025    937       117.423   
+C. GEWEKE DIAGNOSTIC
+Variable  Mean      std dev   NSE iid   RNE iid   
+1         -0.639    7.883     0.079     1.000     
+2         3.779     7.462     0.075     1.000     
+Variable  NSE 4%    RNE 4%    NSE 8%    RNE 8%    NSE 15%   RNE 15%   
+1         0.821     0.009     0.713     0.012     0.485     0.026     
+2         0.696     0.011     0.559     0.018     0.410     0.033     
+---------------------------------------------------------------------------
+CHAIN 3 USING 10000 SAMPLES
+
+A. AUTOCORRELATION
+Variable  Lag 1     Lag 5     Lag 10    Lag 25    
+1         0.044     0.044     0.044     0.044     
+2         -0.051    -0.051    -0.051    -0.051    
+B. RAFTERY-LEWIS DIAGNOSTIC (q = 0.03, r = 0.01, s = 0.95)
+Variable  Thin      Burn      N         Nmin      I-stat    
+1         1         447       164021    937       175.049   
+2         1         468       143680    937       153.340   
+C. GEWEKE DIAGNOSTIC
+Variable  Mean      std dev   NSE iid   RNE iid   
+1         0.279     8.640     0.086     1.000     
+2         2.534     10.551    0.106     1.000     
+Variable  NSE 4%    RNE 4%    NSE 8%    RNE 8%    NSE 15%   RNE 15%   
+1         0.624     0.019     0.597     0.021     0.466     0.034     
+2         0.994     0.011     0.772     0.019     0.518     0.041     
+===================== End DREAM_ZS diagnostics file ======================

@@ -1,0 +1,25 @@
+--------------------------- DREAM-Suite output file --------------------------- 
+
+Sandwich correction is INACTIVE 
+
+ Table 1. DREAM_ZS: Maximum likelihood and posterior median, mean, and standard deviation of parameters 
+          ===================================================================== 
+           Parameter         ML        MAP       MEAN      MEDIAN       STD     
+          --------------------------------------------------------------------- 
+          x_{1} 	  -0.109     -0.109      0.895      0.315      8.940
+          x_{2} 	   9.974      9.974      6.042      2.006     10.528
+          ===================================================================== 
+          ML: Maximum Likelihood values                                         
+          MAP: Maximum A-Posteriori density values                              
+          MEAN: Posterior mean values                                           
+          STD: Posterior standard deviation                                     
+
+
+ Table 2. DREAM_ZS: Pearson''s correlation coefficients of posterior parameter values 
+          ===================== 
+                    x_{1}  x_{2}  
+          x_{1}    1.000  0.126
+          x_{2}    0.126  1.000
+          ===================== 
+
+------------------------- End DREAM-Suite output file ------------------------- 

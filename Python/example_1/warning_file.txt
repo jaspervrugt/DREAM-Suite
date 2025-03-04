@@ -1,0 +1,4 @@
+-------------- DREAM-Suite WARNING file --------------
+Sandwich correction is INACTIVE
+----------- End of DREAM-Suite WARNING file ---------
+----------- End of DREAM-Suite WARNING file ----------
