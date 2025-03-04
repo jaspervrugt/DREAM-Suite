@@ -16,7 +16,7 @@ Bayesian inference has found widespread application and use in science and engin
 ### Executing program
 
 * After intalling, you can simply direct to each example folder and execute the local 'example_X.m' file
-* Please Make sure you read carefully the instructions (i.e., green comments) in 'install_DREAM_Suite.m' and the manual !!!  
+* Please make sure you read carefully the instructions (i.e., green comments) in 'install_DREAM_Suite.m' and the manual !!!  
 
 ### Installing: Python
 
